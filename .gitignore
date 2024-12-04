@@ -1,0 +1,11 @@
+# Archivos del sistema operativo
+.DS_Store
+.localized
+
+# Archivos temporales de edición
+*.swp
+
+# Carpetas innecesarias
+node_modules/
+.vscode/
+.idea/
