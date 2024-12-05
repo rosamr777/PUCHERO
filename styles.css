@@ -36,6 +36,11 @@ p {
     max-width: 90%; /* Limitar el ancho máximo del tablero al 90% de la pantalla */
     margin: 20px auto;
     aspect-ratio: 1; /* Mantener el tablero perfectamente cuadrado */
+    aspect-ratio: 1; /* Mantener el tablero perfectamente cuadrado */
+
+    touch-action: none; /* Deshabilita el deslizamiento */
+    -webkit-user-select: none; /* Evita la selección de texto en dispositivos táctiles */
+    user-select: none;
 }
 
 #wordsearch div {
@@ -55,12 +60,12 @@ p {
 }
 
 #wordsearch div.selected {
-    background-color: #045b09; /* Amarillo para la selección */
+    background-color: #d20000; /* Amarillo para la selección */
     color: #fff; /* Letra blanca */
 }
 
 #wordsearch div.found {
-    background-color: #e74c3c; /* Rojo para palabras encontradas */
+    background-color: #478900; /* Rojo para palabras encontradas */
     color: #fff; /* Letra blanca */
 }
 

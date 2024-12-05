@@ -61,32 +61,45 @@ function renderGrid() {
     }
 }
 
+// Detecta si es un dispositivo táctil
+const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+
+// Manejo de selección
 let selection = [];
-wordsearch.addEventListener("mousedown", (e) => {
-    if (e.target.dataset.x !== undefined) {
-        selection = [{ x: +e.target.dataset.x, y: +e.target.dataset.y }];
-        e.target.classList.add("selected");
+
+// Evento de inicio de selección
+wordsearch.addEventListener(isTouchDevice ? "touchstart" : "mousedown", (e) => {
+    const target = isTouchDevice ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : e.target;
+
+    if (target.dataset.x !== undefined) {
+        selection = [{ x: +target.dataset.x, y: +target.dataset.y }];
+        target.classList.add("selected");
     }
 });
 
-wordsearch.addEventListener("mouseover", (e) => {
-    if (selection.length > 0 && e.target.dataset.x !== undefined) {
-        const x = +e.target.dataset.x;
-        const y = +e.target.dataset.y;
-        if (!selection.find(pos => pos.x === x && pos.y === y)) {
+// Evento de arrastre
+wordsearch.addEventListener(isTouchDevice ? "touchmove" : "mouseover", (e) => {
+    const target = isTouchDevice ? document.elementFromPoint(e.touches[0].clientX, e.touches[0].clientY) : e.target;
+
+    if (selection.length > 0 && target.dataset.x !== undefined) {
+        const x = +target.dataset.x;
+        const y = +target.dataset.y;
+
+        if (!selection.find((pos) => pos.x === x && pos.y === y)) {
             selection.push({ x, y });
-            e.target.classList.add("selected");
+            target.classList.add("selected");
         }
     }
 });
 
-wordsearch.addEventListener("mouseup", () => {
-    const word = selection.map(pos => grid[pos.y][pos.x]).join("");
+// Evento de fin de selección
+wordsearch.addEventListener(isTouchDevice ? "touchend" : "mouseup", () => {
+    const word = selection.map((pos) => grid[pos.y][pos.x]).join("");
     const reverseWord = word.split("").reverse().join("");
 
     // Verificar si la palabra seleccionada es correcta
     if (words.includes(word) || words.includes(reverseWord)) {
-        selection.forEach(pos => {
+        selection.forEach((pos) => {
             document.querySelector(`[data-x="${pos.x}"][data-y="${pos.y}"]`).classList.add("found");
         });
 
@@ -105,7 +118,7 @@ wordsearch.addEventListener("mouseup", () => {
     }
 
     // Limpiar la selección actual
-    document.querySelectorAll(".selected").forEach(cell => cell.classList.remove("selected"));
+    document.querySelectorAll(".selected").forEach((cell) => cell.classList.remove("selected"));
     selection = [];
 });
 
