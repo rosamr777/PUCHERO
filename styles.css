@@ -127,3 +127,13 @@ p {
         font-size: calc(1vw + 0.7vh); /* Ajustar tamaño del texto */
     }
 }
+/* Dispositivos portátiles en modo horizontal */
+@media (orientation: landscape) and (max-height: 600px) {
+    #wordsearch {
+        grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Más celdas por fila */
+    }
+
+    #wordsearch div {
+        font-size: calc(0.7vw + 0.6vh); /* Reducir tamaño de texto */
+    }
+}
