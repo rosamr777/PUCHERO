@@ -13,89 +13,88 @@ body {
     width: 90%; /* El contenedor ocupa el 90% del ancho de la pantalla */
     max-width: 800px; /* Máximo ancho en pantallas grandes */
 }
+
 /* Título */
 h1 {
     font-family: 'Bold', cursive;
     color: rgb(174, 15, 15); /* Rojo brillante */
     font-size: 2rem;
-    text-shadow: 2px 2px #571818; /* Sombra amarilla navideña */
+    text-shadow: 2px 2px #571818; /* Sombra roja */
     margin-bottom: 9px;
 }
+
 /* Instrucciones */
 p {
     color: #144a2a; /* Verde navideño */
-    font-size: 0.7rem;
+    font-size: 1rem; /* Tamaño proporcional */
     margin-bottom: 20px;
 }
 
 /* Tablero de la sopa de letras */
 #wordsearch {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(5%, 1fr)); /* Ajusta las columnas según el ancho disponible */
-    gap: 0.5%; /* Espacio entre celdas proporcional al ancho */
+    grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Ajusta las columnas según el ancho disponible */
+    gap: 2px; /* Espacio entre celdas */
     max-width: 90%; /* Limitar el ancho máximo del tablero al 90% de la pantalla */
     margin: 20px auto;
-    aspect-ratio: 1; /* Mantener el tablero perfectamente cuadrado */
-    aspect-ratio: 1; /* Mantener el tablero perfectamente cuadrado */
-
     touch-action: none; /* Deshabilita el deslizamiento */
-    -webkit-user-select: none; /* Evita la selección de texto en dispositivos táctiles */
-    user-select: none;
+    user-select: none; /* Evita la selección de texto */
+    -webkit-user-select: none;
+    aspect-ratio: 1; /* Mantener el tablero perfectamente cuadrado */
 }
 
 #wordsearch div {
-    width: 100%; /* Las celdas ocupan todo el espacio disponible en la columna */
+    width: 100%; /* Las celdas ocupan todo el espacio disponible */
     aspect-ratio: 1; /* Mantener proporciones cuadradas */
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 0.5% solid #ccc; /* Bordes proporcionados al tamaño de la pantalla */
-    font-size: calc(0.8vw + 0.5vh); /* Texto adaptable al ancho y altura */
+    border: 1px solid #ccc; /* Bordes de las celdas */
+    font-size: calc(10px + 1vw); /* Tamaño adaptativo para el texto */
     font-weight: bold;
     text-transform: uppercase;
     cursor: pointer;
-    background-color: #dfdcdc72;
+    background-color: #dfdcdc;
     color: #333; /* Color de texto */
     transition: background-color 0.3s, color 0.3s;
 }
 
 #wordsearch div.selected {
-    background-color: #d20000; /* Amarillo para la selección */
+    background-color: #28a745; /* Verde para la selección */
     color: #fff; /* Letra blanca */
 }
 
 #wordsearch div.found {
-    background-color: #478900; /* Rojo para palabras encontradas */
+    background-color: #e74c3c; /* Rojo para palabras encontradas */
     color: #fff; /* Letra blanca */
 }
 
 /* Lista de palabras encontradas */
 #words-list {
     list-style: none;
-    padding: 5%;
+    padding: 10px;
     font-size: 1rem;
     text-align: center;
     margin: 20px auto;
     width: 90%; /* La lista ocupa el 90% del ancho */
-    max-width: 400px; /* Limitar ancho máximo en pantallas grandes */
-    background-color: #fffaef; /* Fondo amarillo suave */
-    border: 2% solid #2ecc71; /* Verde brillante */
+    max-width: 400px; /* Limitar ancho máximo */
+    background-color: #f8f9fa; /* Fondo gris suave */
+    border: 2px solid #2ecc71; /* Verde brillante */
     border-radius: 10px;
 }
 
 #words-list li {
-    margin: 5% 0; /* Espaciado vertical proporcional */
+    margin: 5px 0; /* Espaciado vertical */
     font-weight: bold;
     color: #2ecc71; /* Verde brillante */
 }
 
 /* Mensaje de finalización */
 #message {
-    margin-top: 5%;
-    font-size: calc(1.5vw + 1vh); /* Tamaño adaptable */
+    margin-top: 10px;
+    font-size: 1.2rem; /* Tamaño del mensaje */
     font-weight: bold;
     color: #28a745; /* Verde */
-    text-shadow: 1px 1px #f1c40f;
 }
 
 /* --- Responsividad --- */
@@ -103,37 +102,38 @@ p {
 /* Dispositivos pequeños (móviles) */
 @media (max-width: 600px) {
     #wordsearch {
-        grid-template-columns: repeat(auto-fit, minmax(8%, 1fr)); /* Más celdas por fila en pantallas pequeñas */
-        gap: 0.3%; /* Reducir el espacio entre celdas */
+        grid-template-columns: repeat(10, 1fr); /* Más celdas por fila en pantallas pequeñas */
+        gap: 1px; /* Reducir el espacio entre celdas */
     }
 
     #wordsearch div {
-        font-size: calc(1vw + 0.8vh); /* Tamaño de texto proporcional a la pantalla */
-        border: 0.3% solid #ccc; /* Bordes más finos */
+        font-size: calc(8px + 1vw); /* Tamaño de texto proporcional */
+        border: 1px solid #ddd; /* Bordes más finos */
     }
 
     #message {
-        font-size: calc(1.2vw + 1vh); /* Mensaje más pequeño */
+        font-size: 1rem; /* Mensaje más pequeño */
     }
 }
 
 /* Dispositivos medianos (tablets) */
 @media (max-width: 900px) {
     #wordsearch {
-        grid-template-columns: repeat(auto-fit, minmax(6%, 1fr)); /* Ajustar columnas en pantallas medianas */
+        grid-template-columns: repeat(12, 1fr); /* Ajustar columnas */
     }
 
     #wordsearch div {
-        font-size: calc(1vw + 0.7vh); /* Ajustar tamaño del texto */
+        font-size: calc(10px + 1vw); /* Ajustar tamaño del texto */
     }
 }
-/* Dispositivos portátiles en modo horizontal */
-@media (orientation: landscape) and (max-height: 600px) {
+
+/* Dispositivos en modo horizontal */
+@media (orientation: landscape) {
     #wordsearch {
-        grid-template-columns: repeat(auto-fit, minmax(10%, 1fr)); /* Más celdas por fila */
+        grid-template-columns: repeat(15, 1fr); /* Más columnas */
     }
 
     #wordsearch div {
-        font-size: calc(0.7vw + 0.6vh); /* Reducir tamaño de texto */
+        font-size: calc(8px + 0.8vw); /* Reducir tamaño del texto */
     }
 }
