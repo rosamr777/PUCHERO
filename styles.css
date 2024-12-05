@@ -60,12 +60,12 @@ p {
 }
 
 #wordsearch div.selected {
-    background-color: #28a745; /* Verde para la selección */
+    background-color: #a72828; /* Verde para la selección */
     color: #fff; /* Letra blanca */
 }
 
 #wordsearch div.found {
-    background-color: #e74c3c; /* Rojo para palabras encontradas */
+    background-color: #20b451; /* Rojo para palabras encontradas */
     color: #fff; /* Letra blanca */
 }
 
@@ -79,14 +79,14 @@ p {
     width: 90%; /* La lista ocupa el 90% del ancho */
     max-width: 400px; /* Limitar ancho máximo */
     background-color: #f8f9fa; /* Fondo gris suave */
-    border: 2px solid #2ecc71; /* Verde brillante */
+    border: 2px solid #008645; /* Verde brillante */
     border-radius: 10px;
 }
 
 #words-list li {
     margin: 5px 0; /* Espaciado vertical */
     font-weight: bold;
-    color: #2ecc71; /* Verde brillante */
+    color: #1cb426; /* Verde brillante */
 }
 
 /* Mensaje de finalización */
